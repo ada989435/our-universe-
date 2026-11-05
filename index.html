@@ -1,0 +1,103 @@
+
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>张潇琪 × 李彦娇｜我们的宇宙</title>
+<style>
+*{box-sizing:border-box}body{margin:0;min-height:100svh;display:grid;place-items:center;overflow:hidden;color:white;font-family:system-ui,"Microsoft YaHei",sans-serif;background:radial-gradient(ellipse at 50% 100%,#7c388d,transparent 55%),radial-gradient(ellipse at 20% 20%,#493477,transparent 45%),#090615}
+body:before{content:"";position:fixed;inset:-50%;background:conic-gradient(transparent,#a64cba55,transparent,#e77cb455,transparent,#7669d855,transparent);filter:blur(65px);animation:nebula 30s linear infinite}
+@keyframes nebula{to{transform:rotate(360deg)}}
+.app{position:relative;width:min(94vw,680px,calc(100svh - 20px));aspect-ratio:1;border:1px solid #edc9ff88;border-radius:28px;overflow:hidden;background:linear-gradient(145deg,#29183be8,#100c22ed);box-shadow:0 0 90px #d16bdf55,inset 0 0 55px #d6a1ff18;display:flex;flex-direction:column}
+.stars{position:absolute;inset:0;pointer-events:none;background-image:radial-gradient(2px 2px at 15% 20%,white,transparent),radial-gradient(1px 1px at 80% 13%,white,transparent),radial-gradient(2px 2px at 60% 70%,#ffd8ff,transparent),radial-gradient(1px 1px at 35% 80%,white,transparent),radial-gradient(2px 2px at 90% 55%,white,transparent);background-size:190px 170px;animation:twinkle 5s ease-in-out infinite alternate}
+@keyframes twinkle{to{opacity:.35;transform:scale(1.06)}}
+header{padding:17px 20px;font-size:9px;letter-spacing:4px;color:#e8c9f4;display:flex;justify-content:space-between}
+main{position:relative;flex:1;min-height:0}
+.page{display:none;position:absolute;inset:0;padding:12px 22px;align-items:center;justify-content:center;flex-direction:column;text-align:center;animation:appear .4s}
+.page.on{display:flex}@keyframes appear{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.small{font-size:10px;letter-spacing:4px;color:#d9b9eb}
+h1{font-size:clamp(28px,7vw,48px);font-weight:300;letter-spacing:3px;margin:12px 0;text-shadow:0 0 28px #ffb5ed}
+h1 span{color:#ffc4e8}h2{font-weight:300;letter-spacing:5px}
+p{font-size:13px;line-height:2;color:#ead8f1}
+.planet{width:clamp(105px,24vw,160px);aspect-ratio:1;border-radius:50%;margin:8px;background:radial-gradient(circle at 30% 25%,#ffe9fa,#d18bd4 20%,#70529d 52%,#17142e 80%);box-shadow:0 0 35px #ed9bdf,0 0 85px #aa6ddc88;position:relative;animation:float 5s ease-in-out infinite}
+.planet:after{content:"";position:absolute;inset:30% -25%;border:2px solid #f8d5ffb9;border-radius:50%;transform:rotate(-22deg);box-shadow:0 0 15px #e8b4ff}
+@keyframes float{50%{transform:translateY(-10px)}}
+.days{border-block:1px solid #e6bdf355;padding:8px 35px;margin:8px}.num{font-size:53px;font-weight:200;color:#ffc9ec}
+button{cursor:pointer;border:1px solid #edc9ef99;background:linear-gradient(120deg,#d28bd344,#8370c344);color:white;padding:10px 16px;border-radius:30px;font-size:11px;margin:4px}
+button:active{transform:scale(.96)}button:hover{background:#dc9edb66}
+nav{display:flex;justify-content:center;flex-wrap:wrap;gap:3px;padding:8px 5px 13px;border-top:1px solid #ffffff20}
+nav button{padding:8px 10px;font-size:10px}
+.box{width:min(100%,400px);padding:18px;border:1px solid #e9c5f466;border-radius:18px;background:#ffffff0b}
+input{width:min(100%,320px);padding:12px;border:1px solid #e9c5f477;border-radius:25px;background:#ffffff12;color:white;text-align:center}
+#mem{width:min(60%,240px);aspect-ratio:1;border-radius:17px;background:radial-gradient(circle at 30% 25%,#a77ab5,#302348);display:grid;place-items:center;padding:15px;color:#ead7f1}
+#toast{position:absolute;bottom:65px;left:50%;transform:translateX(-50%);background:#6e467d;padding:10px 17px;border-radius:25px;font-size:12px;display:none;white-space:nowrap}
+@media(max-height:500px){header{padding:7px}.planet{width:85px}.days{padding:3px;margin:3px}nav{padding:3px}.page{padding:3px}}
+</style>
+</head>
+<body>
+<div class="app">
+<div class="stars"></div>
+<header><span>✦ OUR LITTLE GALAXY</span><span>FOREVER ♡</span></header>
+<main>
+<section class="page on" id="home">
+<div class="small">A UNIVERSE MADE FOR TWO</div>
+<div class="planet"></div>
+<h1>张潇琪 <span>×</span> 李彦娇</h1>
+<p>从我遇到你的那天开始，<br>我就感觉你像我的整个宇宙。</p>
+<div class="days"><div class="num">106</div><div class="small">在一起的第 106 天</div></div>
+<button onclick="go('album')">✧ 探索我们的星球</button>
+</section>
+<section class="page" id="album">
+<div class="small">MEMORIES IN THE STARS</div><h2>记忆星云</h2>
+<div id="mem">✧<br>这里留给你们的第一张照片<br>♡</div>
+<p id="caption">每一张照片，都是宇宙赠予我们的星光。</p>
+<div><button onclick="photo(-1)">上一张</button><button onclick="photo(1)">下一张</button></div>
+<div class="small" id="count">MEMORY 01 / 08</div>
+</section>
+<section class="page" id="letter">
+<div class="small">A SECRET FROM MY HEART</div><h2>星际来信</h2>
+<div class="box"><p>亲爱的你：<br>如果宇宙有尽头，我希望尽头是你。<br>如果时间可以一直走，我希望每一天都有你。<br>想和你一起看很多次日落，<br>也想和你一起，把平凡的日子过成永远。<br><br>往后的星河漫漫，我们一起走。<br><span style="color:#ffc4e8">永远偏爱你。♡</span></p></div>
+<button onclick="say('这颗心，只为你打开。♡')">拆开一颗爱心</button>
+</section>
+<section class="page" id="wish">
+<div class="small">WISHES FLOAT FOREVER</div><h2>愿望星球</h2>
+<p>写下一件想和对方一起完成的事</p>
+<input id="wish" placeholder="例如：一起去看海边日出…">
+<button onclick="addWish()">✦ 把愿望送上星空</button>
+<div class="box" id="wishes">还没有愿望，写下第一颗星吧 ♡</div>
+</section>
+<section class="page" id="hug">
+<div class="small">EMERGENCY LOVE STATION</div><h2>抱抱补给站</h2>
+<div style="font-size:65px;color:#ffc4e8">♡</div>
+<p>想你的时候，就来这里领取一个抱抱。</p>
+<button onclick="say('老婆抱抱！把今天所有疲惫都交给我，剩下的只有被爱。♡')">老婆抱 ♡</button>
+<button onclick="say('妈妈抱抱！宇宙级别的拥抱，紧紧抱住你。♡')">妈妈抱 ♡</button>
+<p id="hugtext">今日份的偏爱，全部给你。</p>
+</section>
+<section class="page" id="secret">
+<div class="small">YOU FOUND THE HIDDEN STAR</div>
+<div style="font-size:55px;color:#ffc4e8">✦</div><h2>只属于你的秘密</h2>
+<div class="box"><p>茫茫星海里，有那么多颗星星。<br>但我只想朝着你发光。<br><br>不是刚好喜欢你，<br>是喜欢你这件事，刚好发生在每一天。<br><br><b>张潇琪 ♡ 李彦娇</b></p></div>
+<button onclick="go('home')">回到我们的宇宙</button>
+</section>
+</main>
+<nav>
+<button onclick="go('home')">星球首页</button>
+<button onclick="go('album')">记忆星云</button>
+<button onclick="go('letter')">星际来信</button>
+<button onclick="go('wish')">愿望星球</button>
+<button onclick="go('hug')">抱抱补给</button>
+<button onclick="go('secret')">✧ 隐藏星</button>
+</nav>
+<div id="toast"></div>
+</div>
+<script>
+function go(id){document.querySelectorAll('.page').forEach(x=>x.classList.remove('on'));document.getElementById(id).classList.add('on')}
+function say(t){document.getElementById('toast').textContent=t;document.getElementById('toast').style.display='block';document.getElementById('hugtext').textContent=t;setTimeout(()=>document.getElementById('toast').style.display='none',2600)}
+let i=0;const captions=['第一次心动的瞬间','想和你收藏更多日常','你在的地方就是我的星球','把每次相见都变成纪念','我们的快乐有迹可循','平凡日子也闪闪发光','下一站继续一起去','故事还会有很多页'];
+function photo(n){i=(i+n+8)%8;document.getElementById('mem').innerHTML='✧<br>这里留给你们的第 '+(i+1)+' 张照片<br>♡';document.getElementById('count').textContent='MEMORY '+String(i+1).padStart(2,'0')+' / 08';document.getElementById('caption').textContent=captions[i]}
+let ws=[];function addWish(){let x=document.getElementById('wish'),v=x.value.trim();if(!v){say('先写下一颗愿望星吧');return}ws.push(v);document.getElementById('wishes').innerHTML=ws.map(a=>'✦ '+a).join('<br>');x.value=''}
+</script>
+</body>
+</html>
